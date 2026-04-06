@@ -42,12 +42,16 @@ export default function RegisterPage() {
 
     setLoading(true);
     try {
-      await register(email, password, name);
-      toast.success('Registro exitoso. Revisa tu email para el código de verificación.');
-      navigate('/verify');
-    } catch (e) {
-      toast.error(formatApiErrorDetail(e.response?.data?.detail) || e.message);
-    } finally {
+  const res = await register(email, password, name);
+      
+  if (res) {
+    toast.success('Registro exitoso. Revisa tu email para el código de verificación.');
+    navigate('/verify');
+  }
+
+} catch (e) {
+  toast.error(formatApiErrorDetail(e.response?.data?.detail) || e.message);
+} finally {
       setLoading(false);
     }
   };
