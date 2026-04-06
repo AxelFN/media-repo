@@ -78,17 +78,7 @@ function App() {
 }
 
 export default App;
-function App() {
-  return (
-    <ThemeProvider>
-      <AuthProvider>
-        <BrowserRouter>
-          <AppContent />
-        </BrowserRouter>
-      </AuthProvider>
-    </ThemeProvider>
-  );
-}
+
 function subirArchivo(e) {
   const file = e.target.files[0];
 
