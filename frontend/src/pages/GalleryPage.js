@@ -32,19 +32,31 @@ export default function GalleryPage() {
   }, []);
 
   const fetchPublications = async () => {
-    try {
-      const { data } = await axios.get(`${API}/api/publications/approved`);
-      setPublications(data);
-    } catch (e) {
-      console.error('Error fetching publications:', e);
-    } finally {
-      setLoading(false);
-    }
-  };
+  try {
+    const { data } = await axios.get(`${API}/api/files`);
 
-  const getFileUrl = (path) => {
-    return `${API}/api/files/${path}`;
-  };
+ 
+    const formatted = data.map((file, index) => ({
+      id: index,
+      title: file.name,
+      user_name: "Usuario",
+      file_type: file.name.match(/\.(mp4|webm|mov)$/) ? "video" : "image",
+      storage_path: file.name,
+      created_at: new Date().toISOString(),
+      description: ""
+    }));
+
+    setPublications(formatted);
+
+  } catch (e) {
+    console.error('Error fetching publications:', e);
+  } finally {
+    setLoading(false);
+  }
+};
+ const getFileUrl = (path) => {
+  return `${API}/uploads/${path}`;
+};
 
   // Create bento grid classes for visual interest
   const getBentoClass = (index) => {
