@@ -8,7 +8,7 @@ import { Dialog, DialogContent } from '../components/ui/dialog';
 import { Badge } from '../components/ui/badge';
 import { Image as ImageIcon, Video, User, Calendar, X } from 'lucide-react';
 
-const API = process.env.REACT_APP_BACKEND_URL;
+const API_URL = process.env.REACT_APP_API_URL;
 
 // Placeholder images from design guidelines
 const placeholderImages = [
