@@ -11,7 +11,7 @@ import { Badge } from '../components/ui/badge';
 import { toast } from 'sonner';
 import { Plus, Upload, Trash2, Edit2, Image as ImageIcon, Video, Eye, X } from 'lucide-react';
 
-const API = process.env.REACT_APP_BACKEND_URL;
+const API_URL = process.env.REACT_APP_API_URL;
 
 function formatApiErrorDetail(detail) {
   if (detail == null) return "Algo salió mal. Intenta de nuevo.";
