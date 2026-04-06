@@ -1,0 +1,40 @@
+/* Wine/Burgundy themed app styles */
+.App {
+  min-height: 100vh;
+}
+
+/* Remove default styles */
+.App-logo,
+.App-header,
+.App-link {
+  /* Deprecated */
+}
+
+/* Utility classes */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Custom focus ring for wine theme */
+.ring-wine {
+  --tw-ring-color: hsl(var(--wine));
+}
+
+/* Video preview styles */
+video::-webkit-media-controls {
+  display: none !important;
+}
+
+video:hover::-webkit-media-controls {
+  display: flex !important;
+}
