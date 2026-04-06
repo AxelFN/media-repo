@@ -4,6 +4,7 @@ import { AuthProvider } from "./context/AuthContext";
 import { ThemeProvider } from "./context/ThemeContext";
 import { Toaster } from "./components/ui/sonner";
 import { ProtectedRoute } from "./components/ProtectedRoute";
+import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import GalleryPage from "./pages/GalleryPage";
 import LoginPage from "./pages/LoginPage";
@@ -47,7 +48,36 @@ function AppContent() {
     
   );
 }
+function App() {
+  const API = process.env.REACT_APP_BACKEND_URL;
+  const [files, setFiles] = useState([]);
 
+  useEffect(() => {
+    fetch(`${API}/api/files`)
+      .then(res => res.json())
+      .then(data => setFiles(data));
+  }, []);
+
+  return (
+    <div>
+      <h1>Repositorio</h1>
+
+      {files.map((file, index) => (
+        <div key={index}>
+          <p>{file.name}</p>
+
+          <img
+            src={`${API}${file.url}`}
+            alt={file.name}
+            width="200"
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default App;
 function App() {
   return (
     <ThemeProvider>
