@@ -56,7 +56,7 @@ export function AuthProvider({ children }) {
   const login = async (email, password) => {
     const { data } = await axios.post(`${API}/api/auth/login`, { email, password }, { withCredentials: true });
     if (data.requires_2fa) {
-      setPendingEmail(data.email);
+      setPendingEmail(data.email || email);
     }
     return data;
   };
