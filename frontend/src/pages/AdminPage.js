@@ -14,7 +14,7 @@ import {
   Search, Trash2, Edit2, Eye, Shield, TrendingUp
 } from 'lucide-react';
 
-const API_URL = process.env.REACT_APP_API_URL;
+const API = process.env.REACT_APP_BACKEND_URL;
 
 function formatApiErrorDetail(detail) {
   if (detail == null) return "Algo salió mal. Intenta de nuevo.";
