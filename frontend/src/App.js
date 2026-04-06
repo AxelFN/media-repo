@@ -89,6 +89,18 @@ function App() {
     </ThemeProvider>
   );
 }
+function subirArchivo(e) {
+  const file = e.target.files[0];
 
+  const formData = new FormData();
+  formData.append("file", file);
+
+  fetch(`${API}/api/upload`, {
+    method: "POST",
+    body: formData,
+  })
+    .then(res => res.json())
+    .then(() => window.location.reload());
+}
 
 export default App;
