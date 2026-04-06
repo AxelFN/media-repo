@@ -21,9 +21,8 @@ os.makedirs(UPLOAD_DIR, exist_ok=True)
 app.mount("/uploads", StaticFiles(directory=UPLOAD_DIR), name="uploads")
 
 @app.get("/")
-def root():
-    return {"message": "Backend funcionando 🚀"}
-
+def serve_index():
+    return FileResponse("frontend/build/index.html")
 
 @app.post("/api/upload")
 async def upload_file(file: UploadFile = File(...)):
