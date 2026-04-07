@@ -45,3 +45,11 @@ async def upload_file(file: UploadFile = File(...)):
 def list_files():
     files = os.listdir(UPLOAD_DIR)
     return [{"name": f, "url": f"/uploads/{f}"} for f in files]
+
+@app.get("/test-db")
+def test_db():
+    try:
+        users = list(users_collection.find({}, {"_id": 0}))
+        return {"status": "ok", "users": users}
+    except Exception as e:
+        return {"status": "error", "detail": str(e)}
